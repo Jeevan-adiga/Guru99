@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="DEBUG">
+  <Properties>
+    <Property name="log-path">D:\Selenium\Workspace\Guru99\LogFiles</Property>
+  </Properties>
+  <Appenders>
+    <RollingFile name="info" fileName="${log-path}/infoLog_${sys:logFilename}_${date:yyyy-MM-dd-hh_mm_ss}.log"
+                 filePattern="${log-path}/myexample-%d{yyyy-MM-dd}-%i.log">
+         <Filters>
+            <ThresholdFilter level="warn"  onMatch="DENY"   onMismatch="NEUTRAL"/>
+            <ThresholdFilter level="error" onMatch="DENY"   onMismatch="NEUTRAL"/>
+            <ThresholdFilter level="fatal" onMatch="DENY"   onMismatch="NEUTRAL"/>
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+        </Filters>
+      <PatternLayout>
+        <pattern>%d{dd/MMM/yyyy HH:mm:ss,SSS}- %c{1}: %m%n</pattern>
+      </PatternLayout>
+      <Policies>
+        <TimeBasedTriggeringPolicy size="1"/>
+      </Policies>
+
+    </RollingFile>
+    <RollingFile name="trace" fileName="${log-path}/traceLog_${sys:logFilename}_${date:yyyy-MM-dd-hh_mm_ss}.log"
+                 filePattern="${log-path}/myexample-%d{yyyy-MM-dd}-%i.log">
+         <Filters>
+            <ThresholdFilter level="warn"  onMatch="DENY"   onMismatch="NEUTRAL"/>
+            <ThresholdFilter level="error" onMatch="DENY"   onMismatch="NEUTRAL"/>
+            <ThresholdFilter level="fatal" onMatch="DENY"   onMismatch="NEUTRAL"/>
+            <ThresholdFilter level="info" onMatch="DENY" onMismatch="NEUTRAL"/>
+            <ThresholdFilter level="debug" onMatch="DENY" onMismatch="NEUTRAL"/>
+
+             <ThresholdFilter level="TRACE" onMatch="ACCEPT" onMismatch="DENY"/>
+        </Filters>
+      <PatternLayout>
+        <pattern>%d{dd/MMM/yyyy HH:mm:ss,SSS}- %c{1}: %m%n</pattern>
+      </PatternLayout>
+      <Policies>
+        <TimeBasedTriggeringPolicy size="1"/>
+      </Policies>
+
+    </RollingFile>
+  </Appenders>
+  <Loggers>
+
+    <Root level="all" >
+      <AppenderRef ref="info"/>
+      <AppenderRef ref="trace"/>
+    </Root>
+  </Loggers>
+</Configuration>
+
+
+<!-- 
+ <?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<Appenders>
+ 		<File name="logfile" fileName="/LogFiles/logfile.log" append="false">
+ 			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+ 		</File>
+	</Appenders>
+ <Loggers>
+	 <Logger name="org.guru99" level="TRACE"/>
+	 	<Root level="ERROR">
+	 		<AppenderRef ref="logfile"/>
+	 	</Root>
+	 </Loggers>
+</Configuration> -->

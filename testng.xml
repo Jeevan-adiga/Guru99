@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Guru99 Automate" parallel="none">
+  <test name="Guru99_Tests" preserve-order="true">
+    <classes>
+      <class name="testcases.Guru99"/>
+    </classes>
+  </test> <!-- Testcase_01 -->
+</suite> <!-- Guru99 Automate -->
